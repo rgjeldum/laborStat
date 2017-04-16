@@ -17,11 +17,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Labor Statistics</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="#">US map</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -30,11 +30,12 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+        <h1>US map comparing election results with average/median wages</h1>
+        <p class="lead"> This US map shows the 2016 president election results<br> Red: Trump<br> Blue: Clinton</p>
       </div>
       
       <div id="container1" style="position: relative; width: 500px; height: 300px;"></div>
+
 
       <div id="container2" style="position: relative; width: 500px; height: 300px;"></div>
 
@@ -44,10 +45,10 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
     <script src="datamaps.usa.min.js"></script>
 
+    <script src="election.js"></script>
     <script src="jsonOutput.js"></script>
     
     <script>
-        console.log(wages);
         var map = new Datamap({
             element: document.getElementById('container1'),
             scope: 'usa',
@@ -56,246 +57,14 @@
                 Republican: 'red',
                 defaultFill: 'green'
             },
-            data: {
-                AL: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                AK: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                AS: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                AZ: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                AR: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                CA: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                CO: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                CT: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                DE: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                DC: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                FM: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                FL: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                GA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                GU: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                HI: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                ID: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                IL: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                IN: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                IA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                KS: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                KY: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                LA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                ME: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                MH: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MD: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MI: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MN: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                MS: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MO: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MT: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                NE: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                NV: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NH: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NJ: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NM: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NY: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NC: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                ND: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MP: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                OH: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                OK: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                OR: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                PW: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                PA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                PR: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                RI: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                SC: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                SD: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                TN: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                TX: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                UT: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                VT: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                VA: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                WA: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                WV: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                WI: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                WY: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                }
-            }
+            data: election
         });
 
         // Plot the US map based on wages
         // We need to colorize every state based on average wages
         // colors should be uniq for every value.
         // For this purpose we create palette(using min/max series-value)
+        console.log(wages)
         var wagesPerYearPerMonth = wages["2008"]["9"];
         var dataset = {};
         var minValue = 9999;
@@ -303,11 +72,11 @@
         Object.keys(wagesPerYearPerMonth).forEach(function(key) {
             var val = wagesPerYearPerMonth[key];
             var temp = val["average"];
-            if (temp < min) {
-                min = temp;
+            if (temp < minValue) {
+                minValue = temp;
             }
-            if (temp > max) {
-                max = temp;
+            if (temp > maxValue) {
+                maxValue = temp;
             }
         });
 
@@ -315,259 +84,43 @@
         // color can be whatever you wish
         var paletteScale = d3.scale.linear()
                 .domain([minValue,maxValue])
-                .range(["#0000FF","#ff0000"]); // blue color
+                .range(["#ff0000","#0000FF"]); // blue color
 
         // fill dataset in appropriate format
-        series.forEach(function(item){ //
-            // item example value ["USA", 70]
-            var iso = item[0],
-                    value = item[1];
-            dataset[iso] = { numberOfThings: value, fillColor: paletteScale(value) };
+        Object.keys(wagesPerYearPerMonth).forEach(function(key) {
+            var val = wagesPerYearPerMonth[key];
+            var temp = val["average"];
+            dataset[key] = { wageAverage: Number(temp).toFixed(2), fillColor: paletteScale(temp) };
         });
 
         var map = new Datamap({
             element: document.getElementById('container2'),
             scope: 'usa',
-            fills: {
-                Democratic: 'blue',
-                Republican: 'red',
-                defaultFill: 'green'
+            fills: { defaultFill: '#F5F5F5' },
+            data: dataset,
+                    geographyConfig: {
+            borderColor: '#DEDEDE',
+            highlightBorderWidth: 2,
+            // don't change color on mouse hover
+            highlightFillColor: function(geo) {
+                return geo['fillColor'] || '#F5F5F5';
             },
-            data: {
-                AL: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                AK: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                AS: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                AZ: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                AR: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                CA: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                CO: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                CT: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                DE: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                DC: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                FM: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                FL: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                GA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                GU: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                HI: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                ID: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                IL: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                IN: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                IA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                KS: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                KY: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                LA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                ME: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                MH: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MD: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MI: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MN: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                MS: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MO: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MT: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                NE: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                NV: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NH: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NJ: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NM: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NY: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                NC: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                ND: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                MP: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                OH: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                OK: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                OR: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                PW: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                PA: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                PR: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                RI: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                SC: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                SD: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                TN: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                TX: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                UT: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                VT: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                VA: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                WA: {
-                    fillKey: 'Democratic',
-                    numberOfThings: 10381
-                },
-                WV: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                WI: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                },
-                WY: {
-                    fillKey: 'Republican',
-                    numberOfThings: 10381
-                }
+            // only change border
+            highlightBorderColor: '#B7B7B7',
+            // show desired information in tooltip
+            popupTemplate: function(geo, data) {
+                // don't show tooltip if country don't present in dataset
+                if (!data) { return ; }
+                // tooltip content
+                return ['<div class="hoverinfo">',
+                    '<strong>', geo.properties.name, '</strong>',
+                    '<br>Count: <strong>', data.wageAverage, '</strong>',
+                    '</div>'].join('');
             }
+        }
         });
+
+       
     </script>
 
     
