@@ -3,11 +3,8 @@ $( document ).ready(function() {
     var yearMonthChange = function() {
         var year =  yearChosen.getValue();
         var month = monthChosen.getValue();
-        var dataset = dataSetChosen(String(year), String(month));
-        console.log(year);
-        console.log(month);
-        // console.log(dataset);
-        map.updateChoropleth(dataset);
+        var dataset = dataSetChosen(String(year), String(month), "average");
+        map2.updateChoropleth(dataset);
     };
     var yearChosen = $('#ex1').slider({
         formatter: function(value) {
@@ -19,8 +16,24 @@ $( document ).ready(function() {
             return 'Month chosen: ' + value;
         }
     }).on('slide', yearMonthChange).data('slider');
+    var yearMonthChange2 = function() {
+        var year =  yearChosen2.getValue();
+        var month = monthChosen2.getValue();
+        dataset = dataSetChosen(String(year), String(month), "median");
+        map3.updateChoropleth(dataset);
+    };
+    var yearChosen2 = $('#ex3').slider({
+        formatter: function(value) {
+            return 'Year chosen: ' + value;
+        }
+    }).on('slide', yearMonthChange2).data('slider');
+    var monthChosen2 = $('#ex4').slider({
+        formatter: function(value) {
+            return 'Month chosen: ' + value;
+        }
+    }).on('slide', yearMonthChange2).data('slider');
 
-    var dataSetChosen = function (year, month) {
+    var dataSetChosen = function (year, month, type) {
         var wagesPerYearPerMonth = wages[year][month];
         var dataset = {};
         var minValue = 9999;
@@ -28,7 +41,7 @@ $( document ).ready(function() {
         Object.keys(wagesPerYearPerMonth).forEach(function(key) {
             if (key != "undefined") {
                 var val = wagesPerYearPerMonth[key];    
-                var temp = parseFloat(val["average"]) ;
+                var temp = parseFloat(val[String(type)]) ;
                 if (temp < minValue) {
                     minValue = temp;
                 }
@@ -47,8 +60,8 @@ $( document ).ready(function() {
         // fill dataset in appropriate format
         Object.keys(wagesPerYearPerMonth).forEach(function(key) {
             var val = wagesPerYearPerMonth[key];
-            var temp = val["average"];
-            dataset[key] = { wageAverage: Number(temp).toFixed(2), fillColor: paletteScale(temp) };
+            var temp = val[type];
+            dataset[key] = { wage: Number(temp).toFixed(2), fillColor: paletteScale(temp) };
         });
 
         return dataset;
@@ -70,8 +83,8 @@ $( document ).ready(function() {
     // colors should be uniq for every value.
     // For this purpose we create palette(using min/max series-value)
     console.log(wages)
-    var dataset =   dataSetChosen("2001", "1");
-    var map = new Datamap({
+    var dataset =  dataSetChosen("2001", "1", "average");
+    var map2 = new Datamap({
         element: document.getElementById('container2'),
         scope: 'usa',
         fills: { defaultFill: '#F5F5F5' },
@@ -92,11 +105,40 @@ $( document ).ready(function() {
             // tooltip content
             return ['<div class="hoverinfo">',
                 '<strong>', geo.properties.name, '</strong>',
-                '<br>Count: <strong>', data.wageAverage, '</strong>',
+                '<br>Count: <strong>', data.wage, '</strong>',
+                '</div>'].join('');
+            }
+        }  
+    });
+
+    dataset =   dataSetChosen("2001", "1", "median");
+    var map3 = new Datamap({
+        element: document.getElementById('container3'),
+        scope: 'usa',
+        fills: { defaultFill: '#F5F5F5' },
+        data: dataset,
+                geographyConfig: {
+        borderColor: '#DEDEDE',
+        highlightBorderWidth: 2,
+        // don't change color on mouse hover
+        highlightFillColor: function(geo) {
+            return geo['fillColor'] || '#F5F5F5';
+        },
+        // only change border
+        highlightBorderColor: '#B7B7B7',
+        // show desired information in tooltip
+        popupTemplate: function(geo, data) {
+            // don't show tooltip if country don't present in dataset
+            if (!data) { return ; }
+            // tooltip content
+            return ['<div class="hoverinfo">',
+                '<strong>', geo.properties.name, '</strong>',
+                '<br>Count: <strong>', data.wage, '</strong>',
                 '</div>'].join('');
         }
     }
     });
+
 });
 
 
